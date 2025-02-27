@@ -114,7 +114,7 @@ abstract class PandaDoc
         try {
             $headers = $response->getHeaders();
 
-            if (!empty($headers['Content-Type']) && in_array('application/pdf', $headers['Content-Type'])) {
+            if ((!empty($headers['Content-Type']) && in_array('application/pdf', $headers['Content-Type'])) || (!empty($headers['content-type']) && in_array('application/pdf', $headers['content-type']))) {
                 $result = new \stdClass();
                 $result->status = 200;
                 return $result;
